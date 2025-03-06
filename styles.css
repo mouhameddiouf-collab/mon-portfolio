@@ -1,0 +1,413 @@
+/* styles.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #f5f5f5;
+}
+
+/* En-tête et navigation */
+header {
+  background: #004d80;
+  color: #fff;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.photo-profil {
+  width: 150px; /* Ajuste la taille souhaitée */
+  border-radius: 50%; /* Pour une photo ronde */
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.photo-profil {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Sections */
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.section-accueil {
+  text-align: center;
+  background: #e6f2ff;
+}
+
+/* Titres */
+h1, h2, h3 {
+  margin-bottom: 15px;
+}
+
+/* Listes */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+/* Grille pour centres d’intérêt, atouts et langues */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.grid > div {
+  flex: 1 1 250px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* Liens */
+a {
+  color: #004d80;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  width: 50px; /* Taille des logos */
+  height: auto; /* Garde les proportions */
+  margin: 5px; /* Espacement */
+  vertical-align: middle; /* Alignement avec le texte */
+}
+
+/* Pied de page */
+footer {
+  background: #004d80;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .grid {
+    flex-direction: column;
+  }
+}
+
+/* Style du bouton */
+#mode-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  font-size: 16px;
+}
+
+#mode-toggle:hover {
+  background-color: #555;
+}
+
+/* Mode sombre */
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+/* Mode sombre pour les sections */
+.dark-mode section {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Mode sombre pour le bouton */
+.dark-mode #mode-toggle {
+  background-color: white;
+  color: black;
+}
+
+#contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: auto;
+}
+
+#contact input, #contact textarea, #contact button {
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+#contact button {
+  background: #0077B5;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+* {
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* Style du bouton Retour en Haut */
+#scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 119, 181, 0.5); /* Bleu (#0077B5) avec 50% de transparence */
+  color: white;
+  border: 2px solid white; /* Bordure blanche pour le rendre visible */
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: none; /* Caché au départ */
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(5px); /* Ajoute un effet de flou sur le fond */
+}
+
+/* Effet au survol : le bouton devient opaque */
+#scrollToTop:hover {
+  background-color: rgba(0, 119, 181, 1); /* Bleu opaque */
+  transform: scale(1.1); /* Léger agrandissement */
+}
+
+/* Style du curseur personnalisé */
+body {
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: #0077B5;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+.btn-cv {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #0077B5;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.btn-cv:hover {
+  background: #005a8d;
+}
+
+/* Animation d'apparition */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation de sortie */
+.fade-out {
+  animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+nav ul li a {
+  position: relative;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #0077B5;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: #0077B5;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.fade-in-title {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.typing-title::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.gradient-title {
+  background: linear-gradient(to right, #0077B5, #00ffea);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.logo:hover {
+  animation: shake 0.3s ease-in-out;
+}
+
+.logo {
+  transition: transform 0.2s ease-out;
+}
+
+/* Section des réseaux sociaux */
+#social-media {
+  text-align: center;
+  padding: 40px;
+  background: #f4f4f4;
+}
+
+/* Conteneur des icônes */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+/* Boutons de réseaux sociaux */
+.social-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Couleurs des icônes */
+.linkedin { background: #0077B5; }
+.github { background: #333; }
+.twitter { background: #1DA1F2; }
+.instagram { background: #E4405F; }
+.email { background: #D44638; }
+
+/* Effet de zoom au survol */
+.social-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
