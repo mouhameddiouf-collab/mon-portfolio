@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{% block title %}Accueil – Mouhamed Diouf{% endblock %}</title>
+    
+    <link rel="icon" href="{% static 'images/maphoto.jpg' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+</head>
+
+<body class="fade-out-page">
+
+    <div id="loader-wrapper">
+        <div class="loader-content">
+            <i class="fa-solid fa-earth-africa geo-pulse"></i>
+            <div class="loader-orbit"></div>
+        </div>
+        <p class="loader-text">Chargement...</p>
+    </div>
+
+    <div class="noise-overlay"></div>
+    <canvas id="geo-canvas"></canvas>
+
+    <header>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="{% url 'accueil' %}" class="active">Accueil</a></li>
+                <li><a href="{% url 'apropos' %}">Profil</a></li>
+                <li><a href="{% url 'formation' %}">Formation</a></li>
+                <li><a href="{% url 'experience' %}">Expériences</a></li>
+                <li><a href="{% url 'certificats' %}">Certificats</a></li>
+                <li><a href="{% url 'projets' %}">Réalisations</a></li>
+                <li><a href="{% url 'contact' %}">Contacts</a></li>
+            </ul>
+        </nav>
+
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider"> 
+                    <div class="sun-moon"></div>
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="crater"></div>
+                    <div class="star star-1"></div>
+                    <div class="star star-2"></div>
+                </div>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 Mouhamed Diouf - Géographe & Data Analyst.</p>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}  {% load static %}
+
+{% block title %}Accueil – Mouhamed Diouf{% endblock %}
+
+{% block content %}
+    <section id="accueil" class="hero-section">
+        <div class="hero-content">
+            
+            <div class="badge-container" data-aos="fade-down" data-aos-duration="1000">
+                <span class="greeting-badge">👋 Bonjour, je suis</span>
+            </div>
+
+            <h1 id="hacker-name" data-value="Mouhamed DIOUF" 
+                data-aos="zoom-in" data-aos-delay="200">
+                Mouhamed DIOUF
+            </h1>
+
+            <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
+                Je suis <span class="typed-text"></span>
+            </h2>
+
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="600">
+                De l'espace au terrain : je transforme la donnée spatiale en décision stratégique pour un développement durable.
+            </p>
+
+            <div class="cta-group" data-aos="zoom-in-up" data-aos-delay="800">
+                <a href="{% url 'projets' %}" class="btn btn-primary">
+                    <i class="fa-solid fa-layer-group"></i> Voir mes cartes
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn-secondary">
+                    <i class="fa-solid fa-paper-plane"></i> Me contacter
+                </a>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

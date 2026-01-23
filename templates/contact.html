@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact – Mouhamed Diouf{% endblock %}
+
+{% block content %}
+
+<section id="contact" style="padding-top: 120px; padding-bottom: 80px;">
+    <div class="container">
+        
+        <h2 class="fade-in-title" style="text-align: center; margin-bottom: 10px;" data-aos="fade-down">
+            RESTONS EN CONTACT
+        </h2>
+        
+        <div style="width: 60px; height: 4px; background: var(--primary); margin: 0 auto 50px auto;" 
+             data-aos="fade-up" data-aos-delay="200">
+        </div>
+
+        <div class="contact-grid">
+            
+            <div class="map-side" style="height: 400px; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"
+                 data-aos="fade-right" data-aos-duration="1000">
+                <div id="ma-carte" style="height: 100%; width: 100%; z-index: 1;"></div>
+            </div>
+
+            <div class="contact-form-side" data-aos="fade-left" data-aos-duration="1000">
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        <div style="background: #d1fae5; color: #065f46; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; border: 1px solid #10b981;"
+                             data-aos="zoom-in">
+                            <i class="fa-solid fa-check-circle"></i> {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div style="margin-bottom: 30px;" data-aos="fade-up" data-aos-delay="200">
+                    <h3 style="margin-bottom: 10px; color: var(--primary);">Un projet en tête ?</h3>
+                    <p style="margin-bottom: 15px;">N'hésitez pas à m'écrire pour une collaboration ou juste pour échanger.</p>
+                    <div class="contact-info">
+                        <p><i class="fa-solid fa-envelope"></i> dioufmouhamed959@gmail.com</p>
+                        <p><i class="fa-solid fa-phone"></i> +221 77 699 27 33</p>
+                    </div>
+                </div>
+
+                <form class="styled-form" method="POST" action="">
+                    {% csrf_token %}
+                    
+                    <div class="input-group" data-aos="fade-up" data-aos-delay="300">
+                        <input type="text" name="nom" placeholder="Votre Nom" required>
+                    </div>
+                    
+                    <div class="input-group" data-aos="fade-up" data-aos-delay="400">
+                        <input type="email" name="email" placeholder="Votre Email" required>
+                    </div>
+                    
+                    <div class="input-group" data-aos="fade-up" data-aos-delay="500">
+                        <textarea name="message" placeholder="Votre Message..." rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" data-aos="zoom-in" data-aos-delay="600">
+                        Envoyer le message <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{{ lieux|json_script:"lieux-data" }}
+
+{% endblock %}
