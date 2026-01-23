@@ -4,6 +4,7 @@ Django settings for mon_portfolio project.
 
 from pathlib import Path
 import os 
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -62,13 +63,23 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mon_portfolio.wsgi.application'
 
 
-# Database
+# =========================================
+# BASE DE DONNÉES (HYBRIDE) 🧠
+# =========================================
+
+# Par défaut : SQLite (pour ton ordinateur)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Si on est sur Render (c'est-à-dire si une adresse de base de données existe)
+# On écrase la config par défaut pour utiliser Neon (PostgreSQL)
+database_url = os.environ.get("DATABASE_URL")
+if database_url:
+    DATABASES["default"] = dj_database_url.parse(database_url)
 
 
 # Password validation
