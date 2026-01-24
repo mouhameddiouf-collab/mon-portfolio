@@ -731,47 +731,92 @@ body.page-enter { animation: pageReveal 0.6s ease-out forwards; }
 }
 
 /* =========================================
-   ANIMATION IMAGE PROFIL MODERNE ("WHAOU")
+   STYLE PHOTO "MAYADA" (FORME ORGANIQUE)
    ========================================= */
 
-/* 1. Contrôle de la taille de l'image */
-.profile-pic.profile-pic-animated {
-    width: 100%;            /* Prend la largeur du conteneur */
-    max-width: 400px;       /* Largeur maximale */
-    height: auto;           /* Hauteur automatique pour garder les proportions */
-    max-height: 500px;      /* Hauteur maximale pour ne pas être trop grand */
-    object-fit: cover;      /* Remplit le cadre sans déformation */
-    border-radius: 20px;    /* Coins arrondis */
-    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2); /* Ombre portée initiale */
-    
-    /* Préparation de l'animation */
-    opacity: 0;
-    transform: scale(0.8) translateY(50px) rotate(-5deg);
-    /* Lancement de l'animation 'whaou-appear' */
-    animation: whaou-appear 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: 0.5s; /* Petit délai pour laisser le texte apparaître */
+/* 1. On pousse le contenu vers le bas pour ne pas toucher le menu */
+.hero-section.split-layout {
+    padding-top: 150px; /* Marge importante en haut */
+    padding-bottom: 50px;
+    align-items: center; /* Centre verticalement texte et image */
+    min-height: 90vh; /* Prend presque tout l'écran */
 }
 
-/* 2. Définition de l'animation */
-@keyframes whaou-appear {
+/* 2. Le conteneur de l'image (Zone de sécurité) */
+.hero-image-container {
+    position: relative;
+    width: 380px;  /* Largeur fixe raisonnable */
+    height: 380px; /* Hauteur fixe (Carré de base) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px; /* Un peu d'espace à droite */
+}
+
+/* 3. L'image transformée en "Blob" */
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image remplit la forme sans s'écraser */
+    object-position: top center; /* On garde ton visage bien centré */
+    
+    /* LA MAGIE : On transforme le rectangle en forme liquide */
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    
+    /* Style visuel */
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.3); /* Belle ombre profonde */
+    border: 4px solid rgba(255, 255, 255, 0.1); /* Bordure subtile */
+    
+    /* Animation de flottement */
+    animation: float-blob 6s ease-in-out infinite;
+    z-index: 2; /* Au-dessus du fond */
+}
+
+/* 4. Le halo lumineux coloré derrière (Le "Nuage" bleu de Mayada) */
+.blob-shape {
+    position: absolute;
+    width: 110%; /* Un peu plus grand que la photo */
+    height: 110%;
+    background: linear-gradient(135deg, #00e5ff 0%, #0056b3 100%); /* Dégradé Cyan/Bleu */
+    
+    /* Même forme liquide */
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    
+    filter: blur(40px); /* Effet néon flou */
+    opacity: 0.6;
+    z-index: 1; /* Derrière la photo */
+    
+    /* Animation inversée pour un effet vivant */
+    animation: float-blob 6s ease-in-out infinite reverse;
+}
+
+/* 5. L'ANIMATION DE FLOTTEMENT */
+@keyframes float-blob {
     0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(50px) rotate(-5deg);
-        box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translateY(0);
     }
-    60% {
-        transform: scale(1.05) translateY(-10px) rotate(2deg); /* Léger dépassement */
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; /* La forme change */
+        transform: translateY(-15px); /* L'image monte doucement */
     }
     100% {
-        opacity: 1;
-        transform: scale(1) translateY(0) rotate(0deg); /* Position finale normale */
-        box-shadow: 0 20px 50px rgba(0, 229, 255, 0.4); /* Ombre portée finale plus forte */
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translateY(0);
     }
 }
 
-/* 3. Effet de survol (Bonus !) */
-.profile-pic.profile-pic-animated:hover {
-    transform: scale(1.03);
-    box-shadow: 0 25px 60px rgba(0, 229, 255, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* 6. VERSION MOBILE (IMPORTANT) */
+@media screen and (max-width: 900px) {
+    .hero-section.split-layout {
+        flex-direction: column-reverse; /* Image en haut, texte en bas */
+        padding-top: 100px;
+        text-align: center;
+    }
+    
+    .hero-image-container {
+        width: 280px; /* Plus petit sur téléphone */
+        height: 280px;
+        margin: 0 auto 40px auto; /* Centré avec marge en bas */
+    }
 }
