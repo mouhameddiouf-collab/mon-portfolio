@@ -695,3 +695,37 @@ body.page-enter { animation: pageReveal 0.6s ease-out forwards; }
         justify-content: center;
     }
 }
+
+/* =========================================
+   CORRECTION ALIGNEMENT TEXTE (GAUCHE)
+   ========================================= */
+
+/* Force le conteneur de texte à s'aligner à gauche */
+.hero-content.text-left {
+    text-align: left !important;
+    align-items: flex-start !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Force les titres à s'aligner à gauche */
+.hero-title, .hero-subtitle {
+    text-align: left !important;
+}
+
+/* Force la description à s'aligner à gauche */
+.hero-description {
+    text-align: left !important;
+    margin-left: 0 !important; /* Enlève les marges auto qui centrent */
+    margin-right: auto !important;
+}
+
+/* Force les boutons à s'aligner à gauche */
+.cta-group.align-left {
+    justify-content: flex-start !important;
+}
+
+/* Force les icônes sociales à s'aligner à gauche */
+.social-icons-hero {
+    justify-content: flex-start !important;
+}
