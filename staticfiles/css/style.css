@@ -1087,3 +1087,157 @@ h2 .highlight,
 .certificat-card:hover .btn-link i {
     transform: translateX(5px) translateY(-5px); /* La petite flèche bouge */
 }
+
+/* =========================================
+   STYLE EXPÉRIENCES "NEON DATA STREAM"
+   ========================================= */
+
+/* 1. LA LIGNE (Le Faisceau Laser) */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+/* La barre verticale devient un dégradé lumineux */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px; /* Ajuste selon ton alignement actuel */
+    width: 4px;
+    background: linear-gradient(180deg, #00e5ff, #0056b3, rgba(0, 229, 255, 0.2));
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    border-radius: 2px;
+}
+
+/* 2. LE CONTENEUR DE L'ÉLÉMENT */
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+    padding-left: 60px; /* Espace pour la ligne et le point */
+}
+
+/* 3. LE POINT (Nœud de Donnée Pulsant) */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 12px; /* Centré sur la ligne (20px - la moitié de la taille du point) */
+    top: 0; /* Alignement avec le haut de la carte */
+    width: 20px;
+    height: 20px;
+    background: #0f172a; /* Fond sombre */
+    border: 3px solid #00e5ff; /* Bordure Cyan */
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 10px #00e5ff;
+    transition: 0.3s ease;
+}
+
+/* Animation de "battement de cœur" sur le point */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 8px; /* Ajusté pour entourer le point */
+    top: -4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(0, 229, 255, 0.4);
+    z-index: 1;
+    animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Au survol du point ou de la carte */
+.timeline-item:hover::before {
+    background: #00e5ff; /* Le point s'allume complètement */
+    transform: scale(1.2);
+    box-shadow: 0 0 25px #00e5ff;
+}
+
+/* 4. LA CARTE (Terminal de Verre) */
+.timeline-content {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* Petite flèche vers le point */
+    margin-left: 10px;
+}
+
+/* Triangle connecteur (Flèche) */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 10px;
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-right: 10px solid rgba(255, 255, 255, 0.1); /* Couleur de la bordure */
+}
+
+/* Effet Hover sur la carte */
+.timeline-content:hover {
+    transform: translateX(10px); /* Se déplace légèrement vers la droite */
+    background: rgba(15, 23, 42, 0.8);
+    border-color: #00e5ff;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(0, 229, 255, 0.05);
+}
+
+/* 5. LA DATE (Badge Digital) */
+.timeline-date {
+    display: inline-block;
+    background: rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    letter-spacing: 1px;
+}
+
+/* 6. LE TITRE ET TEXTE */
+.timeline-content h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.timeline-content p, .timeline-content ul {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.timeline-content ul li {
+    margin-bottom: 8px;
+    list-style-type: none; /* On enlève les puces standard */
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Puces personnalisées (petits carrés cyan) */
+.timeline-content ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #00e5ff;
+    font-size: 1.2rem;
+    line-height: 1rem;
+}
