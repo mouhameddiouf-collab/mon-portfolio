@@ -40,16 +40,16 @@
         </div>
 
         <nav>
-            <ul>
-                <li><a href="{% url 'accueil' %}" class="active">Accueil</a></li>
-                <li><a href="{% url 'apropos' %}">Profil</a></li>
-                <li><a href="{% url 'formation' %}">Formation</a></li>
-                <li><a href="{% url 'experience' %}">Expériences</a></li>
-                <li><a href="{% url 'certificats' %}">Certificats</a></li>
-                <li><a href="{% url 'projets' %}">Réalisations</a></li>
-                <li><a href="{% url 'contact' %}">Contacts</a></li>
-            </ul>
-        </nav>
+    <ul>
+        <li><a href="{% url 'accueil' %}" class="{% if request.resolver_match.url_name == 'accueil' %}active{% endif %}">Accueil</a></li>
+        <li><a href="{% url 'apropos' %}" class="{% if request.resolver_match.url_name == 'apropos' %}active{% endif %}">Profil</a></li>
+        <li><a href="{% url 'formation' %}" class="{% if request.resolver_match.url_name == 'formation' %}active{% endif %}">Formation</a></li>
+        <li><a href="{% url 'experience' %}" class="{% if request.resolver_match.url_name == 'experience' %}active{% endif %}">Expériences</a></li>
+        <li><a href="{% url 'certificats' %}" class="{% if request.resolver_match.url_name == 'certificats' %}active{% endif %}">Certificats</a></li>
+        <li><a href="{% url 'projets' %}" class="{% if request.resolver_match.url_name == 'projets' %}active{% endif %}">Réalisations</a></li>
+        <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contacts</a></li>
+    </ul>
+</nav>
 
         <div class="theme-switch-wrapper">
             <label class="theme-switch" for="checkbox">

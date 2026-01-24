@@ -1,22 +1,24 @@
-{% extends 'base.html' %}  {% load static %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Accueil – Mouhamed Diouf{% endblock %}
 
 {% block content %}
     <section id="accueil" class="hero-section">
+        
         <div class="hero-content">
             
             <div class="badge-container" data-aos="fade-down" data-aos-duration="1000">
                 <span class="greeting-badge">👋 Bonjour, je suis</span>
             </div>
 
-            <h1 id="hacker-name" data-value="Mouhamed DIOUF" 
+            <h1 id="hacker-name" class="neon-text" data-value="Mouhamed DIOUF" 
                 data-aos="zoom-in" data-aos-delay="200">
-                Mouhamed DIOUF
+                Mouhamed <span class="highlight">DIOUF</span>
             </h1>
 
             <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
-                Je suis <span class="typed-text"></span>
+                Je suis <span class="typed-text highlight">Développeur & Géomaticien</span>
             </h2>
 
             <p class="hero-description" data-aos="fade-up" data-aos-delay="600">
@@ -24,14 +26,25 @@
             </p>
 
             <div class="cta-group" data-aos="zoom-in-up" data-aos-delay="800">
-                <a href="{% url 'projets' %}" class="btn btn-primary">
+                <a href="{% url 'projets' %}" class="btn-neon">
                     <i class="fa-solid fa-layer-group"></i> Voir mes cartes
                 </a>
-                <a href="{% url 'contact' %}" class="btn btn-secondary">
+                <a href="{% url 'contact' %}" class="btn-ghost">
                     <i class="fa-solid fa-paper-plane"></i> Me contacter
                 </a>
             </div>
 
+            <div class="social-icons" data-aos="fade-up" data-aos-delay="900">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
         </div>
+
+        <div class="hero-image" data-aos="fade-left" data-aos-duration="1000">
+            <div class="blob-bg"></div>
+            <img src="{% static 'images/profile.png' %}" alt="Mouhamed Diouf">
+        </div>
+
     </section>
 {% endblock %}
