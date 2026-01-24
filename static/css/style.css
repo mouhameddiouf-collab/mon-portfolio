@@ -528,3 +528,170 @@ body.page-enter { animation: pageReveal 0.6s ease-out forwards; }
         height: auto !important;
     }
 }
+
+/* =========================================
+   FIX POUR LE LAYOUT CONTACT
+   ========================================= */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap; /* Passe à la ligne sur mobile */
+    gap: 40px;
+    align-items: flex-start; /* Aligne en haut */
+}
+
+.map-side, .contact-form-side {
+    flex: 1;             /* Chacun prend la moitié de l'espace */
+    min-width: 300px;    /* Sur mobile, ils prennent toute la largeur */
+}
+
+/* Style des champs de formulaire */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.styled-form input, 
+.styled-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05); /* Fond légèrement transparent */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: 0.3s;
+}
+
+.styled-form input:focus, 
+.styled-form textarea:focus {
+    border-color: var(--primary);
+    background: var(--card-bg);
+    box-shadow: 0 0 10px rgba(12, 167, 137, 0.2);
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-info i {
+    color: var(--primary);
+}
+
+/* =========================================
+   CORRECTIF DESIGN "MAYADA" (SPLIT SCREEN)
+   ========================================= */
+
+/* 1. On active le mode 2 colonnes */
+.hero-section.split-layout {
+    display: flex;
+    justify-content: space-between; /* Écarte les éléments */
+    align-items: center;
+    padding: 0 10%; /* Marges sur les côtés */
+    text-align: left; /* Force le texte à gauche */
+}
+
+/* 2. Réglage de la partie Texte */
+.hero-content.text-left {
+    max-width: 50%; /* Prend la moitié de l'écran */
+    text-align: left !important;
+    align-items: flex-start;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    max-width: 90%;
+    margin-bottom: 30px;
+}
+
+.cta-group.align-left {
+    justify-content: flex-start; /* Aligne les boutons à gauche */
+}
+
+/* 3. Réglage de la partie Image */
+.hero-image-container {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Le cercle lumineux derrière la photo */
+.blob-shape {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: var(--primary);
+    border-radius: 50%;
+    filter: blur(80px); /* L'effet néon flou */
+    opacity: 0.3;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profile-pic {
+    width: 100%;
+    max-width: 450px; /* Taille max de la photo */
+    z-index: 2;
+    position: relative;
+    /* Si ta photo est carrée, on l'arrondit un peu */
+    border-radius: 20px; 
+    /* Si c'est une photo détourée (sans fond), supprime le border-radius */
+}
+
+/* 4. Les icônes sociales sous le texte */
+.social-icons-hero {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+.social-icons-hero a {
+    width: 40px; height: 40px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary);
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+.social-icons-hero a:hover {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+/* 5. RESPONSIVE (Mobile) */
+@media screen and (max-width: 900px) {
+    .hero-section.split-layout {
+        flex-direction: column-reverse; /* Image en haut, texte en bas */
+        justify-content: center;
+        text-align: center; /* Sur mobile, on remet centré */
+        padding-top: 100px;
+    }
+    .hero-content.text-left {
+        max-width: 100%;
+        text-align: center !important;
+    }
+    .cta-group.align-left {
+        justify-content: center;
+    }
+    .hero-image-container {
+        width: 80%;
+        margin-bottom: 40px;
+    }
+    .social-icons-hero {
+        justify-content: center;
+    }
+}
