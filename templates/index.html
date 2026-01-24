@@ -4,46 +4,45 @@
 {% block title %}Accueil – Mouhamed Diouf{% endblock %}
 
 {% block content %}
-    <section id="accueil" class="hero-section">
+    <section id="accueil" class="hero-section split-layout">
         
-        <div class="hero-content">
+        <div class="hero-content text-left">
             
-            <div class="badge-container" data-aos="fade-down" data-aos-duration="1000">
+            <div class="badge-container" data-aos="fade-down">
                 <span class="greeting-badge">👋 Bonjour, je suis</span>
             </div>
 
-            <h1 id="hacker-name" class="neon-text" data-value="Mouhamed DIOUF" 
-                data-aos="zoom-in" data-aos-delay="200">
+            <h1 class="hero-title" data-aos="fade-right" data-aos-delay="200">
                 Mouhamed <span class="highlight">DIOUF</span>
             </h1>
 
-            <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
-                Je suis <span class="typed-text highlight">Développeur & Géomaticien</span>
+            <h2 class="hero-subtitle" data-aos="fade-right" data-aos-delay="400">
+                Je suis <span class="typed-text highlight-green"></span>
             </h2>
 
             <p class="hero-description" data-aos="fade-up" data-aos-delay="600">
                 De l'espace au terrain : je transforme la donnée spatiale en décision stratégique pour un développement durable.
             </p>
 
-            <div class="cta-group" data-aos="zoom-in-up" data-aos-delay="800">
-                <a href="{% url 'projets' %}" class="btn-neon">
-                    <i class="fa-solid fa-layer-group"></i> Voir mes cartes
+            <div class="cta-group align-left" data-aos="zoom-in-up" data-aos-delay="800">
+                <a href="{% url 'projets' %}" class="btn btn-primary">
+                    <i class="fa-solid fa-layer-group"></i> Mes Projets
                 </a>
-                <a href="{% url 'contact' %}" class="btn-ghost">
-                    <i class="fa-solid fa-paper-plane"></i> Me contacter
+                <a href="{% url 'contact' %}" class="btn btn-secondary">
+                    <i class="fa-solid fa-paper-plane"></i> Contact
                 </a>
             </div>
 
-            <div class="social-icons" data-aos="fade-up" data-aos-delay="900">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
+            <div class="social-icons-hero" data-aos="fade-up" data-aos-delay="900">
+                <a href="https://github.com/ton-github" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/ton-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:ton-email@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
 
-        <div class="hero-image" data-aos="fade-left" data-aos-duration="1000">
-            <div class="blob-bg"></div>
-            <img src="{% static 'images/profile.png' %}" alt="Mouhamed Diouf">
+        <div class="hero-image-container" data-aos="fade-left" data-aos-duration="1000">
+            <div class="blob-shape"></div>
+            <img src="{% static 'images/maphoto.jpg' %}" alt="Mouhamed Diouf" class="profile-pic">
         </div>
 
     </section>
