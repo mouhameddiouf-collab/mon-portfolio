@@ -822,25 +822,30 @@ body.page-enter { animation: pageReveal 0.6s ease-out forwards; }
 }
 
 /* =========================================
-   STYLE MODERNE GLOBAL ("GLASSMORPHISM")
+   TECHNIQUE 2 : LUEUR INTÉRIEURE SUR LE VERRE
    ========================================= */
 
-/* 1. ADIEU LES CARRÉS, BONJOUR LES ARRONDIS */
+/* Cherche ce bloc qu'on a mis tout à l'heure et REMPLACE-LE par celui-ci */
 .card, .projet-card, .service-card, .timeline-content, .contact-form-side, .map-side {
-    border-radius: 25px !important; /* Arrondis prononcés */
-    border: 1px solid rgba(255, 255, 255, 0.08) !important; /* Bordure très fine */
-    background: rgba(30, 41, 59, 0.7) !important; /* Fond semi-transparent */
-    backdrop-filter: blur(12px) !important; /* Effet de flou derrière (Glass) */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important; /* Ombre douce */
-    transition: transform 0.4s ease, box-shadow 0.4s ease !important;
-    overflow: hidden; /* Pour que rien ne dépasse des coins ronds */
+    border-radius: 25px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Bordure un peu plus claire */
+    background: rgba(30, 41, 59, 0.6) !important; /* Un peu plus transparent */
+    backdrop-filter: blur(12px) !important;
+    
+    /* C'EST ICI QUE ÇA CHANGE : Double ombre */
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.3), /* Ombre extérieure (profondeur) */
+        inset 0 0 20px rgba(255, 255, 255, 0.05) !important; /* Lueur intérieure subtile */
+        
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease !important;
+    overflow: hidden;
 }
 
-/* 2. EFFET DE SURVOL (Lévitation) */
+/* Au survol, on allume la bordure */
 .card:hover, .projet-card:hover, .service-card:hover {
-    transform: translateY(-10px) !important; /* Monte vers le haut */
-    box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15) !important; /* Lueur néon */
-    border-color: rgba(0, 229, 255, 0.3) !important;
+    transform: translateY(-10px) !important;
+    box-shadow: 0 20px 40px rgba(0, 229, 255, 0.2) !important;
+    border-color: #00e5ff !important; /* La bordure devient Cyan brillant */
 }
 
 /* 3. TITRES MODERNES (Avec un petit trait néon) */
@@ -911,4 +916,46 @@ input:focus, textarea:focus {
     border-radius: 20px;
     background: linear-gradient(90deg, #00e5ff, #0056b3);
     box-shadow: 0 0 10px #00e5ff;
+}
+
+/* =========================================
+   TECHNIQUE 1 : TEXTE NÉON DÉGRADÉ
+   ========================================= */
+
+/* Applique le dégradé sur les noms et les points forts */
+h1 .highlight, 
+h2 .highlight, 
+.typed-text,
+.fade-in-title {
+    background: linear-gradient(to right, #00e5ff, #0056b3); /* Le dégradé */
+    -webkit-background-clip: text; /* Coupe le fond pour qu'il ne soit que dans le texte */
+    -webkit-text-fill-color: transparent; /* Rend le texte transparent pour voir le fond */
+    display: inline-block; /* Nécessaire pour que ça marche bien */
+    font-weight: 800; /* Rend le texte plus épais pour mieux voir l'effet */
+}
+
+/* =========================================
+   TECHNIQUE 3 : SCROLLBAR NÉON
+   ========================================= */
+
+/* Fonctionne sur Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 10px; /* Largeur de la barre */
+}
+
+/* Le fond de la barre (le rail) */
+::-webkit-scrollbar-track {
+    background: #0f172a; /* La couleur du fond de ton site */
+}
+
+/* La partie qui bouge (le curseur) */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00e5ff, #0056b3); /* Dégradé Cyan/Bleu */
+    border-radius: 10px; /* Arrondi */
+    border: 2px solid #0f172a; /* Petite bordure pour la détacher */
+}
+
+/* Au survol de la barre */
+::-webkit-scrollbar-thumb:hover {
+    background: #00e5ff; /* Devient cyan uni */
 }
