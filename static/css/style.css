@@ -729,3 +729,49 @@ body.page-enter { animation: pageReveal 0.6s ease-out forwards; }
 .social-icons-hero {
     justify-content: flex-start !important;
 }
+
+/* =========================================
+   ANIMATION IMAGE PROFIL MODERNE ("WHAOU")
+   ========================================= */
+
+/* 1. Contrôle de la taille de l'image */
+.profile-pic.profile-pic-animated {
+    width: 100%;            /* Prend la largeur du conteneur */
+    max-width: 400px;       /* Largeur maximale */
+    height: auto;           /* Hauteur automatique pour garder les proportions */
+    max-height: 500px;      /* Hauteur maximale pour ne pas être trop grand */
+    object-fit: cover;      /* Remplit le cadre sans déformation */
+    border-radius: 20px;    /* Coins arrondis */
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2); /* Ombre portée initiale */
+    
+    /* Préparation de l'animation */
+    opacity: 0;
+    transform: scale(0.8) translateY(50px) rotate(-5deg);
+    /* Lancement de l'animation 'whaou-appear' */
+    animation: whaou-appear 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.5s; /* Petit délai pour laisser le texte apparaître */
+}
+
+/* 2. Définition de l'animation */
+@keyframes whaou-appear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px) rotate(-5deg);
+        box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2);
+    }
+    60% {
+        transform: scale(1.05) translateY(-10px) rotate(2deg); /* Léger dépassement */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(0deg); /* Position finale normale */
+        box-shadow: 0 20px 50px rgba(0, 229, 255, 0.4); /* Ombre portée finale plus forte */
+    }
+}
+
+/* 3. Effet de survol (Bonus !) */
+.profile-pic.profile-pic-animated:hover {
+    transform: scale(1.03);
+    box-shadow: 0 25px 60px rgba(0, 229, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
