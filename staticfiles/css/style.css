@@ -820,3 +820,95 @@ body.page-enter { animation: pageReveal 0.6s ease-out forwards; }
         margin: 0 auto 40px auto; /* Centré avec marge en bas */
     }
 }
+
+/* =========================================
+   STYLE MODERNE GLOBAL ("GLASSMORPHISM")
+   ========================================= */
+
+/* 1. ADIEU LES CARRÉS, BONJOUR LES ARRONDIS */
+.card, .projet-card, .service-card, .timeline-content, .contact-form-side, .map-side {
+    border-radius: 25px !important; /* Arrondis prononcés */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; /* Bordure très fine */
+    background: rgba(30, 41, 59, 0.7) !important; /* Fond semi-transparent */
+    backdrop-filter: blur(12px) !important; /* Effet de flou derrière (Glass) */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important; /* Ombre douce */
+    transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    overflow: hidden; /* Pour que rien ne dépasse des coins ronds */
+}
+
+/* 2. EFFET DE SURVOL (Lévitation) */
+.card:hover, .projet-card:hover, .service-card:hover {
+    transform: translateY(-10px) !important; /* Monte vers le haut */
+    box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15) !important; /* Lueur néon */
+    border-color: rgba(0, 229, 255, 0.3) !important;
+}
+
+/* 3. TITRES MODERNES (Avec un petit trait néon) */
+h2, h3 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+/* Le petit trait sous les titres */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #00e5ff; /* Cyan */
+    border-radius: 2px;
+    margin-top: 8px;
+    box-shadow: 0 0 10px #00e5ff;
+}
+
+/* 4. BOUTONS (Forme Pilule) */
+.btn, button, input[type="submit"] {
+    border-radius: 50px !important; /* Complètement rond sur les côtés */
+    padding: 12px 30px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* 5. CHAMPS DE FORMULAIRE (Contact) */
+input, textarea {
+    border-radius: 15px !important; /* Coins doux */
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid transparent !important;
+    padding: 15px !important;
+    color: white !important;
+}
+input:focus, textarea:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: #00e5ff !important; /* Bordure cyan quand on écrit */
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2) !important;
+    outline: none;
+}
+
+/* 6. IMAGES DES PROJETS (Zoom fluide) */
+.projet-img {
+    border-radius: 25px 25px 0 0 !important; /* Arrondi seulement en haut */
+    overflow: hidden;
+}
+.projet-img img {
+    transition: transform 0.6s ease !important;
+    width: 100%;
+}
+.projet-card:hover .projet-img img {
+    transform: scale(1.1); /* Zoom léger au survol */
+}
+
+/* 7. COMPÉTENCES (Barres rondes) */
+.progress-bar-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    height: 10px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    border-radius: 20px;
+    background: linear-gradient(90deg, #00e5ff, #0056b3);
+    box-shadow: 0 0 10px #00e5ff;
+}
