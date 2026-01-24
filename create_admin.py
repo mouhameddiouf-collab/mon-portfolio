@@ -20,3 +20,4 @@ if not User.objects.filter(username=USERNAME).exists():
     User.objects.create_superuser(USERNAME, EMAIL, PASSWORD)
 else:
     print("✅ L'admin existe déjà.")
+
