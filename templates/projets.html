@@ -5,83 +5,90 @@
 
 {% block content %}
 
-    <section id="expertise" style="padding-top: 100px; padding-bottom: 50px;">
-        
-        <h2 class="fade-in-title" style="text-align: center;" data-aos="fade-down">
-            MON EXPERTISE
-        </h2>
-        
-        <p style="text-align:center; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto; color: #666;"
-           data-aos="fade-up" data-aos-delay="200">
-            Au-delà des outils, j'apporte une méthodologie rigoureuse pour transformer vos données géographiques en solutions décisionnelles.
-        </p>
-        
-        <div class="grid-services">
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
-                <div class="icon-box"><i class="fa-solid fa-map-location-dot"></i></div>
-                <h3>Cartographie Avancée</h3>
-                <p>Conception de cartes thématiques et interactives pour visualiser les enjeux territoriaux avec précision.</p>
-            </div>
+    <section id="expertise" style="padding-top: 120px; padding-bottom: 50px;">
+        <div class="container"> <h2 class="section-title text-center" data-aos="fade-down">
+                MON <span class="highlight">EXPERTISE</span>
+            </h2>
             
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
-                <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
-                <h3>Analyse Spatiale</h3>
-                <p>Traitement statistique et géospatial pour identifier des tendances et zones à risque.</p>
-            </div>
+            <p style="text-align:center; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--text-light);"
+               data-aos="fade-up" data-aos-delay="100">
+                Au-delà des outils, j'apporte une méthodologie rigoureuse pour transformer vos données géographiques en solutions décisionnelles.
+            </p>
             
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
-                <div class="icon-box"><i class="fa-solid fa-chalkboard-user"></i></div>
-                <h3>Formation et Support</h3>
-                <p>Accompagnement et transfert de compétences sur les outils SIG.</p>
+            <div class="grid-services"> <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="icon-box"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3>Cartographie Avancée</h3>
+                    <p>Conception de cartes thématiques et interactives pour visualiser les enjeux territoriaux avec précision.</p>
+                </div>
+                
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Analyse Spatiale</h3>
+                    <p>Traitement statistique et géospatial pour identifier des tendances et zones à risque.</p>
+                </div>
+                
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="icon-box"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <h3>Formation et Support</h3>
+                    <p>Accompagnement et transfert de compétences sur les outils SIG et l'analyse de données.</p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="projets" style="padding-bottom: 80px;">
-        <h2 class="fade-in-title" style="text-align: center;" data-aos="fade-right">
-            MES PROJETS SIG
-        </h2>
-        <p style="text-align:center; margin-bottom:40px; color: #666;" data-aos="fade-left" data-aos-delay="200">
-            Sélection de travaux illustrant mon expertise technique.
-        </p>
-        
-        <div class="grid-projets">
+    <section id="projets" style="padding-bottom: 100px;">
+        <div class="container"> <h2 class="section-title text-center" data-aos="fade-right">
+                MES PROJETS <span class="highlight">SIG & DATA</span>
+            </h2>
             
-            {% for projet in projets %}
-            <div class="projet-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
-                <div class="projet-img">
-                    {% if projet.image %}
-                        <img src="{{ projet.image.url }}" alt="{{ projet.titre }}">
-                    {% else %}
-                        <img src="{% static 'images/maphoto.jpg' %}" alt="Défaut">
-                    {% endif %}
-                </div>
-                <div class="projet-info">
-                    <h3>{{ projet.titre }}</h3>
+            <p style="text-align:center; margin-bottom:40px; color: var(--text-light);" data-aos="fade-left" data-aos-delay="100">
+                Une sélection de travaux illustrant mon savoir-faire technique.
+            </p>
+            
+            <div class="grid-projets">
+                
+                {% for projet in projets %}
+                <div class="projet-card" data-aos="fade-up" data-aos-delay="100">
                     
-                    <p>{{ projet.description|truncatewords:20 }}</p>
-                    
-                    <div class="tags-container">
-                        <span class="tag" style="background:var(--primary); color:white;">
-                            {{ projet.outils }}
-                        </span>
+                    <div class="projet-img">
+                        {% if projet.image %}
+                            <img src="{{ projet.image.url }}" alt="{{ projet.titre }}">
+                        {% else %}
+                            <img src="{% static 'images/maphoto.jpg' %}" alt="Défaut">
+                        {% endif %}
                     </div>
+                    
+                    <div class="projet-info">
+                        <h3>{{ projet.titre }}</h3>
+                        
+                        <p>{{ projet.description|truncatewords:15 }}</p>
+                        
+                        <div class="tags-container" style="margin-bottom: 20px;">
+                            <span class="tag">
+                                {{ projet.outils|default:"SIG" }}
+                            </span>
+                        </div>
 
-                    {% if projet.lien %}
-                    <a href="{{ projet.lien }}" target="_blank" class="btn-projet">
-                        Voir le projet <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    {% else %}
-                    <a href="#" class="btn-projet">
-                        Voir la carte <i class="fa-solid fa-eye"></i>
-                    </a>
-                    {% endif %}
+                        {% if projet.lien %}
+                        <a href="{{ projet.lien }}" target="_blank" class="btn-projet">
+                            Voir le projet <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        {% else %}
+                        <a href="#" class="btn-projet" style="cursor: default; opacity: 0.7;">
+                            Détails à venir <i class="fa-solid fa-lock"></i>
+                        </a>
+                        {% endif %}
+                    </div>
                 </div>
+                {% empty %}
+                <div style="text-align: center; grid-column: 1/-1; padding: 40px; color: var(--text-light);">
+                    <i class="fas fa-folder-open" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
+                    <p>Aucun projet publié pour le moment.</p>
+                </div>
+                {% endfor %}
+                
             </div>
-            {% empty %}
-            <p style="text-align:center; width:100%;">Aucun projet publié pour le moment.</p>
-            {% endfor %}
-            
         </div>
     </section>
 

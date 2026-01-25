@@ -5,56 +5,99 @@
 
 {% block content %}
 
-    <section id="a-propos" style="padding-top: 100px;"> 
-        <h2 class="fade-in-title" data-aos="fade-right">À PROPOS DE MOI</h2>
+    <section id="a-propos" style="padding-top: 120px;"> 
+        <div class="container">
+            <h2 class="fade-in-title" data-aos="fade-right">À PROPOS DE MOI</h2>
+        </div>
         
-        <div class="profil-container">
-            
-            <div class="profil-img-wrapper" data-aos="fade-right" data-aos-duration="1000">
-                <img src="{% static 'images/maphoto.jpg' %}" alt="Mouhamed Diouf" class="photo-profil">
-            </div>
-            
-            <div class="profil-text" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <h3>Géographe & Data Analyst</h3>
-                <p>
-                    Passionné par l'interaction entre l'homme et son environnement, je combine la puissance des <strong>Systèmes d'Information Géographique (SIG)</strong> avec l'analyse de données moderne.
-                    <br><br>
-                    Mon objectif ? Transformer des données complexes en cartes claires et en outils d'aide à la décision stratégique pour le développement durable en Afrique.
-                </p>
+        <div class="container">
+            <div class="tech-profile-container" data-aos="fade-up">
                 
-                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                    <a href="{% static 'documents/mon-cv.pdf' %}" target="_blank" class="btn-cv" data-aos="zoom-in" data-aos-delay="400">
-                        <i class="fa-solid fa-download"></i> Télécharger mon CV
-                    </a>
+                <div class="profile-img-box">
+                    <div class="tech-ring"></div> 
+                    <img src="{% static 'images/maphoto.jpg' %}" alt="Mouhamed Diouf" class="about-img">
+                </div>
+
+                <div class="profile-info">
+                    <h2>Géographe & <span class="highlight">Data Analyst</span></h2>
+                    
+                    <p>
+                        Passionné par l'interaction entre l'homme et son environnement, je combine la puissance des 
+                        <strong class="text-cyan">Systèmes d'Information Géographique (SIG)</strong> avec l'analyse de données moderne.
+                        <br><br>
+                        Mon objectif ? Transformer des données complexes en cartes claires et en outils d'aide à la décision stratégique pour le développement durable en Afrique.
+                    </p>
+
+                    <div style="margin-top: 30px;">
+                        <a href="{% static 'documents/mon-cv.pdf' %}" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Télécharger mon CV
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="competences" style="padding: 60px 20px; background: #f8fcfb;"> <div style="max-width: 1000px; margin: 0 auto;">
+    <section id="interets" style="padding-bottom: 60px;">
+        <div class="container">
+            <h2 class="fade-in-title" data-aos="fade-right">CENTRES D'INTÉRÊTS ET ATOUTS</h2>
+            
+            <div class="widgets-grid">
+                
+                <div class="card-widget" data-aos="zoom-in-up" data-aos-delay="100">
+                    <h3 class="widget-title"><i class="fa-solid fa-magnifying-glass"></i> Centres d’intérêt</h3>
+                    <ul class="widget-list">
+                        <li>La recherche géographique</li>
+                        <li>Sport : Football, Fitness</li>
+                        <li>Jeux d’esprits : Mots croisés</li>
+                    </ul>
+                </div>
+                
+                <div class="card-widget" data-aos="zoom-in-up" data-aos-delay="300">
+                    <h3 class="widget-title"><i class="fa-solid fa-star"></i> Atouts</h3>
+                    <ul class="widget-list">
+                        <li>Sérieux & Méticuleux</li>
+                        <li>Esprit d’équipe</li>
+                        <li>Autonome</li>
+                    </ul>
+                </div>
+                
+                <div class="card-widget" data-aos="zoom-in-up" data-aos-delay="500">
+                    <h3 class="widget-title"><i class="fa-solid fa-language"></i> Langues</h3>
+                    <ul class="widget-list">
+                        <li>Français (Courant)</li>
+                        <li>Anglais (Technique)</li>
+                        <li>Wolof (Maternel)</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="competences" style="padding: 60px 20px;"> 
+        <div class="container">
             <h2 class="fade-in-title" data-aos="fade-right" style="text-align: center; display: block;">MES COMPÉTENCES DATA</h2>
             <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: var(--text-light);">
                 Je ne me contente pas de faire des cartes : je code, j'analyse et j'automatise. 
                 Voici une visualisation globale de mon profil technique hybride.
             </p>
 
-            <div class="chart-container" style="display: flex; justify-content: center; margin-bottom: 60px;" data-aos="zoom-in">
-                <div class="chart-wrapper" style="position: relative; height:500px; width:500px; max-width: 90vw;">
-                    <canvas id="skillsChart"></canvas>
-                </div>
+            <div class="chart-container" data-aos="zoom-in">
+                <canvas id="skillsChart"></canvas>
             </div>
 
-            <div data-aos="fade-up">
+            <div data-aos="fade-up" style="margin-top: 60px;">
                 <h3 style="text-align: center; color: var(--primary); margin-bottom: 30px;">Détail des maîtrises</h3>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px;">
                     {% for comp in competences %}
-                    <div class="skill-card" style="background: var(--card-bg); padding: 15px; border-radius: 15px; box-shadow: var(--shadow); border: 1px solid rgba(12, 167, 137, 0.1); display: flex; align-items: center; gap: 10px; transition: transform 0.3s;">
-                        <div style="background: rgba(12, 167, 137, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <div class="skill-card" style="background: var(--card-bg); padding: 15px; border-radius: 15px; box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 10px; transition: transform 0.3s;">
+                        <div style="background: rgba(0, 229, 255, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                             <i class="{{ comp.icone_code|default:'fas fa-check' }}" style="color: var(--primary);"></i>
                         </div>
                         <div>
-                            <div style="font-weight: 600; font-size: 0.9rem;">{{ comp.nom }}</div>
+                            <div style="font-weight: 600; font-size: 0.9rem; color: white;">{{ comp.nom }}</div>
                             <div style="color: var(--primary); font-weight: 700;">{{ comp.niveau }}%</div>
                         </div>
                     </div>
@@ -81,15 +124,14 @@
                             label: 'Niveau de Maîtrise',
                             data: data,
                             fill: true,
-                            // Couleurs légèrement plus premium
-                            backgroundColor: 'rgba(12, 167, 137, 0.25)',
-                            borderColor: '#0ca789',
+                            backgroundColor: 'rgba(0, 229, 255, 0.2)', // Cyan transparent
+                            borderColor: '#00e5ff', // Cyan Néon
                             borderWidth: 2,
-                            pointBackgroundColor: '#fff',
-                            pointBorderColor: '#0ca789',
-                            pointHoverBackgroundColor: '#0ca789',
+                            pointBackgroundColor: '#0f172a',
+                            pointBorderColor: '#00e5ff',
+                            pointHoverBackgroundColor: '#00e5ff',
                             pointHoverBorderColor: '#fff',
-                            pointRadius: 4, // Points un peu plus gros
+                            pointRadius: 4,
                             pointHoverRadius: 6
                         }]
                     },
@@ -98,20 +140,19 @@
                         maintainAspectRatio: false,
                         scales: {
                             r: {
-                                angleLines: { color: 'rgba(150, 150, 150, 0.1)' },
-                                grid: { color: 'rgba(150, 150, 150, 0.1)' },
+                                angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                                grid: { color: 'rgba(255, 255, 255, 0.1)' },
                                 pointLabels: {
-                                    // J'ai réduit un peu la police pour éviter le chevauchement
-                                    font: { size: 11, family: 'Poppins', weight: '500' },
-                                    color: '#64748b',
-                                    padding: 10 // Ajoute de l'espace entre le graphique et le texte
+                                    font: { size: 12, family: 'Poppins', weight: '500' },
+                                    color: '#cbd5e1',
+                                    padding: 10
                                 },
                                 suggestedMin: 0,
                                 suggestedMax: 100,
                                 ticks: { 
-                                    display: true, // J'affiche les repères (20, 40, 60...) c'est plus pro
+                                    display: true,
                                     stepSize: 20,
-                                    color: '#9ca3af',
+                                    color: 'rgba(255, 255, 255, 0.3)',
                                     backdropColor: 'transparent',
                                     font: { size: 10 }
                                 }
@@ -121,99 +162,16 @@
                             legend: { display: false },
                             tooltip: {
                                 backgroundColor: '#0f172a',
-                                titleFont: { family: 'Poppins' },
-                                bodyFont: { family: 'Poppins' },
+                                titleColor: '#00e5ff',
+                                bodyColor: '#fff',
+                                borderColor: 'rgba(255,255,255,0.1)',
+                                borderWidth: 1,
                                 callbacks: {
                                     label: function(context) {
                                         return ' Maîtrise : ' + context.raw + '%';
                                     }
                                 }
                             }
-                        }
-                    }
-                });
-            }
-        });
-    </script>
-
-    <section id="interets">
-        <h2 class="fade-in-title" data-aos="fade-right">CENTRES D'INTÉRÊTS ET ATOUTS</h2>
-        <div class="grid-interests">
-            
-            <div class="interest-card" data-aos="zoom-in-up" data-aos-delay="100">
-                <h3><i class="fa-solid fa-magnifying-glass"></i> Centres d’intérêt</h3>
-                <ul>
-                    <li>La recherche géographique</li>
-                    <li>Sport : Football, Fitness</li>
-                    <li>Jeux d’esprits : Mots croisés</li>
-                </ul>
-            </div>
-            
-            <div class="interest-card" data-aos="zoom-in-up" data-aos-delay="300">
-                <h3><i class="fa-solid fa-star"></i> Atouts</h3>
-                <ul>
-                    <li>Sérieux</li>
-                    <li>Méticuleux</li>
-                    <li>Esprit d’équipe</li>
-                    <li>Autonome</li>
-                </ul>
-            </div>
-            
-            <div class="interest-card" data-aos="zoom-in-up" data-aos-delay="500">
-                <h3><i class="fa-solid fa-language"></i> Langues</h3>
-                <ul>
-                    <li>Français</li>
-                    <li>Anglais</li>
-                </ul>
-            </div>
-            
-        </div>
-    </section>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const ctx = document.getElementById('skillsChart');
-            
-            // Récupération des données envoyées par Django
-            // Le "default" évite le bug si la liste est vide
-            const labels = {{ skill_names|default:"[]"|safe }};
-            const data = {{ skill_levels|default:"[]"|safe }};
-
-            if (ctx && labels.length > 0) {
-                new Chart(ctx, {
-                    type: 'radar',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Niveau de Maîtrise',
-                            data: data,
-                            fill: true,
-                            backgroundColor: 'rgba(12, 167, 137, 0.2)', // Vert transparent
-                            borderColor: '#0ca789', // Vert solide
-                            pointBackgroundColor: '#fff',
-                            pointBorderColor: '#0ca789',
-                            pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: '#0ca789'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            r: {
-                                angleLines: { color: 'rgba(150, 150, 150, 0.1)' },
-                                grid: { color: 'rgba(150, 150, 150, 0.1)' },
-                                pointLabels: {
-                                    font: { size: 12, family: 'Poppins' },
-                                    color: '#64748b'
-                                },
-                                suggestedMin: 0,
-                                suggestedMax: 100,
-                                ticks: { display: false, backdropColor: 'transparent' }
-                            }
-                        },
-                        plugins: {
-                            legend: { display: false }
                         }
                     }
                 });
