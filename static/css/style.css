@@ -367,3 +367,13 @@ body.hovering .cursor-outline {
 @media (max-width: 900px) {
     .cursor-dot, .cursor-outline { display: none; }
 }
+
+.projet-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Limite à 4 lignes et met "..." à la fin */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 20px;
+    color: var(--text-light);
+    line-height: 1.5;
+}
