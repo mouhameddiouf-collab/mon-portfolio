@@ -20,15 +20,21 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-# J'ai fusionné tes listes : Jazzmin est bien en premier !
 INSTALLED_APPS = [
     'jazzmin',                  # <--- DOIT ETRE EN PREMIER
+
+    # --- CLOUDINARY (STOCKAGE IMAGES) ---
+    'cloudinary_storage',       # Doit être avant staticfiles
+    'django.contrib.staticfiles', 
+    'cloudinary',               # Doit être après staticfiles
+    # ------------------------------------
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    
     'vitrine',
 ]
 
@@ -48,7 +54,7 @@ ROOT_URLCONF = 'mon_portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], # Correction ici (plus propre)
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-LANGUAGE_CODE = 'fr-fr' # J'ai mis en Français pour toi
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
@@ -110,29 +116,38 @@ USE_TZ = True
 
 
 # =========================================
-# FICHIERS STATIQUES ET MEDIAS (VERSION PROD)
+# FICHIERS STATIQUES (CSS, JS)
 # =========================================
 
 STATIC_URL = '/static/'
-
-# Dossier de travail (où tu codes)
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-# --- CE QU'IL MANQUAIT POUR LA PRODUCTION (CRITIQUE) ---
-# Dossier où Django rassemble les fichiers pour le serveur
+STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# Le moteur de Whitenoise pour compresser et servir les fichiers
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-# -------------------------------------------------------
 
-# Pour les images uploadées (projets)
+
+# =========================================
+# FICHIERS MEDIA (IMAGES UPLOADÉES)
+# =========================================
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
+
+# =========================================
+# CONFIGURATION CLOUDINARY (IMPORTANT) ☁️
+# =========================================
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
+
+# On dit à Django : "Pour les médias, utilise Cloudinary au lieu du disque local"
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 # =========================================
 # CONFIGURATION EMAIL (GMAIL)
@@ -142,7 +157,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'dioufmouhamed959@gmail.com'
-EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD' # Assure-toi que c'est bien ton mot de passe d'application ici
 
 
 # ====================================
