@@ -298,36 +298,113 @@ h2::after {
 .focus-border { position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: 0.4s; }
 .input-group input:focus ~ .focus-border, .input-group textarea:focus ~ .focus-border { width: 100%; box-shadow: 0 0 10px var(--primary); }
 
-/* 16. RESPONSIVE (MOBILE FIX) */
+/* =========================================
+   MOBILE PREMIUM & RESPONSIVE
+   ========================================= */
 @media screen and (max-width: 900px) {
-    header { justify-content: space-between; padding: 0 15px; top: 10px; height: 60px; }
-    .menu-toggle { display: block; color: white; font-size: 1.5rem; cursor: pointer; }
     
-    nav ul {
-        position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
-        background: #0f172a; flex-direction: column; align-items: center; justify-content: center;
-        transition: 0.4s; z-index: 900;
+    /* 1. HEADER & MENU HAMBURGER */
+    header { 
+        justify-content: space-between; 
+        padding: 0 20px; 
+        top: 0; /* Collé en haut sur mobile */
+        width: 100%;
+        border-radius: 0 0 20px 20px; /* Arrondi juste en bas */
+        height: 70px;
     }
-    nav ul.active { left: 0; }
-    nav ul li a { font-size: 1.5rem; margin: 15px 0; }
 
-    .tech-profile-container { flex-direction: column; text-align: center; padding: 30px; margin-top: 100px; }
+    .menu-toggle { 
+        display: block; /* On affiche le bouton */
+        color: white; 
+        font-size: 1.8rem; 
+        cursor: pointer; 
+        z-index: 1001; /* Au-dessus du menu */
+        transition: 0.3s;
+    }
+    
+    /* Animation du bouton quand le menu est ouvert */
+    .menu-toggle.active i::before {
+        content: "\f00d"; /* Code FontAwesome pour la croix (X) */
+        color: var(--primary);
+    }
+
+    /* LE MENU MOBILE (Plein écran effet Verre) */
+    nav ul {
+        position: fixed; 
+        top: 0; left: -100%; /* Caché à gauche */
+        width: 100%; height: 100vh;
+        background: rgba(15, 23, 42, 0.98); /* Fond très opaque */
+        backdrop-filter: blur(20px); /* Effet de flou intense */
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        gap: 40px; /* Espace entre les liens */
+        transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1); /* Animation fluide "Premium" */
+        z-index: 900;
+        box-shadow: none;
+    }
+    
+    nav ul.active { left: 0; /* Le menu apparaît */ }
+    
+    nav ul li a { 
+        font-size: 1.8rem; /* Gros texte facile à cliquer */
+        font-weight: 700;
+        opacity: 0; /* Caché au début pour l'animation */
+        transform: translateY(20px);
+        transition: 0.5s;
+    }
+    
+    /* Animation en cascade des liens quand le menu s'ouvre */
+    nav ul.active li a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 2. PROFIL MOBILE (Ajustements Visuels) */
+    .tech-profile-container { 
+        padding: 30px 20px; 
+        margin-top: 100px;
+    }
     .profile-img-box { margin-bottom: 30px; width: 200px; height: 200px; }
     .about-img { width: 180px; height: 180px; }
-    .profile-info h2 { font-size: 1.8rem; }
     
-    .widgets-grid, .grid-projets, .contact-grid { grid-template-columns: 1fr; }
-    .chart-container { height: 300px; }
-    .map-card { min-height: 300px; order: 2; }
-    .form-card { order: 1; padding: 30px 20px; }
+    /* 3. HERO SECTION (Correction de ta capture) */
+    .hero-section {
+        flex-direction: column-reverse; /* Image en haut, texte en bas */
+        padding-top: 100px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-image-container {
+        width: 260px; height: 260px;
+        margin: 0 auto 30px auto;
+    }
     
-    .split-layout { flex-direction: column-reverse; text-align: center; }
-    .hero-image-container { width: 280px; height: 280px; margin: 0 auto 40px; margin-right: auto; }
-    .hero-title { font-size: 2.5rem; }
+    .hero-text {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    /* Ajustement des tailles de police pour mobile */
+    .hero-title { 
+        font-size: 2.5rem; /* Plus petit pour ne pas casser la ligne */
+        line-height: 1.2;
+    }
     
-    /* FIX MOBILE : ON CENTRE LES BOUTONS ET LES ICÔNES */
-    .cta-buttons, .social-icons-hero { justify-content: center !important; }
+    .hero-subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+        min-height: 60px; /* Évite que ça saute quand le texte change */
+    }
+
+    /* Boutons et Icônes centrés */
+    .cta-buttons, .social-icons-hero { 
+        justify-content: center !important; 
+        flex-wrap: wrap;
+    }
     
+    /* Cacher le curseur magique sur mobile (gênant au toucher) */
     .cursor-dot, .cursor-outline { display: none; }
 }
 

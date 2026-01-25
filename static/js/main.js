@@ -270,3 +270,38 @@ interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
 });
+
+/* =========================================
+   MENU MOBILE INTERACTIF
+   ========================================= */
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav ul');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            // Ouvre/Ferme le menu
+            navMenu.classList.toggle('active');
+            // Change l'icône (ajoute la classe active au bouton aussi)
+            menuToggle.classList.toggle('active');
+            
+            // Animation en cascade des liens (Effet Whaou)
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+        });
+    }
+
+    // Fermer le menu quand on clique sur un lien
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        });
+    });
+});
