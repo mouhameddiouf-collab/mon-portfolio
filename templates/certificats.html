@@ -7,52 +7,96 @@
 
     <section id="certificats" style="padding-top: 100px; padding-bottom: 50px;">
         
-        <h2 class="section-title text-center" data-aos="fade-down">
-            LICENCES ET <span class="highlight">CERTIFICATS</span>
+        <h2 class="fade-in-title" style="text-align: center;" data-aos="fade-down">
+            LICENCES ET CERTIFICATS
         </h2>
         
-        <p style="text-align:center; margin-bottom: 50px; color: var(--text-light); max-width: 600px; margin-left: auto; margin-right: auto;" 
+        <p style="text-align:center; margin-bottom: 50px; color: var(--text); max-width: 600px; margin-left: auto; margin-right: auto;" 
            data-aos="fade-up" data-aos-delay="200">
             Mes certifications validant mes compétences en gestion de projet, data science et environnement.
         </p>
 
         <div class="certificat-container">
             
-            {% for certif in certificats %}
             <div class="certificat-card" data-aos="zoom-in" data-aos-delay="100">
-                
                 <div class="certif-logo">
-                    {% if certif.logo %}
-                        <img src="{{ certif.logo.url }}" alt="{{ certif.organisme }}">
-                    {% else %}
-                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:white; border-radius:15px;">
-                            <i class="fa-solid fa-certificate" style="font-size: 2rem; color: var(--primary);"></i>
-                        </div>
-                    {% endif %}
+                    <img src="{% static 'images/linkedinlogo.jpg' %}" alt="LinkedIn">
                 </div>
-
                 <div class="certif-info">
-                    <h3>{{ certif.titre }}</h3>
-                    
-                    <p class="issuer">Émis par : <strong>{{ certif.organisme }}</strong></p>
-                    
-                    <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 15px;">
-                        {{ certif.date_obtention|date:"F Y" }}
-                    </p>
-
-                    {% if certif.lien_preuve %}
-                    <a href="{{ certif.lien_preuve }}" target="_blank" class="btn-link">
+                    <h3>Les fondements de la gestion de projet</h3>
+                    <p class="issuer">Émis par : <strong>LinkedIn</strong></p>
+                    <a href="https://www.linkedin.com/learning/certificates/e4d0f1494eb3ed2c67c1f05bf24e6a2f29c8cf3907ffdaa51799d3ddb72d8d2d" target="_blank" class="btn-link">
                         Voir le certificat <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
-                    {% endif %}
                 </div>
             </div>
-            {% empty %}
-            <div style="text-align:center; width:100%; grid-column:1/-1; color: var(--text-light);">
-                <p>Aucun certificat ajouté pour le moment.</p>
+
+            <div class="certificat-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="certif-logo">
+                    <img src="{% static 'images/linkedinlogo.jpg' %}" alt="LinkedIn">
+                </div>
+                <div class="certif-info">
+                    <h3>Python pour la data science</h3>
+                    <p class="issuer">Émis par : <strong>LinkedIn</strong></p>
+                    <a href="https://www.linkedin.com/learning/certificates/ebe5f0cf01383a5cb5032486bdd7dae7807992a0f61491959ce7b4f2b0231a46" target="_blank" class="btn-link">
+                        Voir le certificat <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
             </div>
-            {% endfor %}
+
+            <div class="certificat-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="certif-logo">
+                    <img src="{% static 'images/ifdd.jpg' %}" alt="IFDD">
+                </div>
+                <div class="certif-info">
+                    <h3>Métiers de l’environnement</h3>
+                    <p class="issuer">Émis par : <strong>IFDD</strong></p>
+                    <a href="https://www.objectif2030.org/mooc/cert/p2GMoE/" target="_blank" class="btn-link">
+                        Voir le certificat <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
             </div>
+
+            <div class="certificat-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="certif-logo">
+                    <img src="{% static 'images/agencefrancaisededeveloppementlogo.jpg' %}" alt="AFD">
+                </div>
+                <div class="certif-info">
+                    <h3>Suivi et Évaluation de projet</h3>
+                    <p class="issuer">Émis par : <strong>AFD</strong></p>
+                    <a href="https://mooc-campus.afd.fr/admin/tool/certificate/index.php?code=9228290466MD" target="_blank" class="btn-link">
+                        Voir le certificat <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="certificat-card" data-aos="zoom-in" data-aos-delay="500">
+                <div class="certif-logo">
+                    <img src="{% static 'images/FORCENSénégal.png' %}" alt="FORCE-N">
+                </div>
+                <div class="certif-info">
+                    <h3>Data analysis</h3>
+                    <p class="issuer">Émis par : <strong>FORCE-N Sénégal</strong></p>
+                    <a href="{% static 'documents/Certificat.pdf' %}" target="_blank" class="btn-link">
+                        Voir le certificat <i class="fa-solid fa-file-pdf"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="certificat-card" data-aos="zoom-in" data-aos-delay="600">
+                <div class="certif-logo">
+                    <img src="{% static 'images/FORCENSénégal.png' %}" alt="FORCE-N">
+                </div>
+                <div class="certif-info">
+                    <h3>Intelligence Artificielle pour tous</h3>
+                    <p class="issuer">Émis par : <strong>FORCE-N Sénégal</strong></p>
+                    <a href="{% static 'documents/CertificatIA.pdf' %}" target="_blank" class="btn-link">
+                        Voir le certificat <i class="fa-solid fa-file-pdf"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </section>
 
 {% endblock %}
