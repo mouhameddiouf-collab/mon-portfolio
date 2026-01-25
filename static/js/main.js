@@ -244,3 +244,29 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+// MAGIC CURSOR SCRIPT
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorOutline = document.querySelector('.cursor-outline');
+
+window.addEventListener('mousemove', function(e) {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    // Le point suit instantanément
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+
+    // Le cercle suit avec un délai (animation fluide)
+    cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+});
+
+// Effet quand on survole un lien
+const interactiveElements = document.querySelectorAll('a, button, .btn, .card');
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+});

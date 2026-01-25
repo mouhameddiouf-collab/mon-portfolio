@@ -332,3 +332,38 @@ h2::after {
 
 /* 17. FOOTER */
 footer { background: #0f172a; padding: 50px 20px; color: rgba(255,255,255,0.5); text-align: center; font-size: 0.8rem; margin-top: auto; }
+
+/* =========================================
+   MAGIC CURSOR
+   ========================================= */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none; /* Important pour pouvoir cliquer dessous */
+}
+
+.cursor-dot {
+    width: 8px; height: 8px;
+    background-color: var(--primary);
+}
+
+.cursor-outline {
+    width: 40px; height: 40px;
+    border: 2px solid var(--primary);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* Quand on survole un lien ou un bouton (Effet Aimant) */
+body.hovering .cursor-outline {
+    width: 60px; height: 60px;
+    background-color: rgba(0, 229, 255, 0.1);
+    border-color: transparent;
+}
+/* Cache le curseur sur mobile (Inutile) */
+@media (max-width: 900px) {
+    .cursor-dot, .cursor-outline { display: none; }
+}
