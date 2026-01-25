@@ -1,0 +1,133 @@
+/* =========================================
+   DJANGO ADMIN DARK MODE - THEME NEON
+   ========================================= */
+
+/* 1. COULEURS GLOBALES (On écrase les variables Django) */
+:root {
+    --primary: #00e5ff !important;
+    --secondary: #0056b3 !important;
+    --accent: #d946ef !important;
+    --primary-fg: #fff !important;
+    
+    --body-bg: #0f172a !important;     /* Ton fond bleu nuit */
+    --header-bg: #1e293b !important;   /* En-tête plus clair */
+    --border-color: rgba(255, 255, 255, 0.1) !important;
+    --darkened-bg: rgba(0, 0, 0, 0.2) !important;
+    
+    --body-quiet-color: #94a3b8 !important;
+    --body-loud-color: #fff !important;
+    
+    --link-fg: #00e5ff !important;     /* Liens Cyan */
+    --link-hover-color: #fff !important;
+}
+
+/* 2. LE FOND ET LE TEXTE */
+body {
+    background-color: var(--body-bg) !important;
+    color: #cbd5e1 !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* 3. L'EN-TÊTE (La barre du haut) */
+#header {
+    background: var(--header-bg) !important;
+    border-bottom: 1px solid #00e5ff;
+    padding: 15px 40px !important;
+    box-shadow: 0 5px 20px rgba(0, 229, 255, 0.1);
+}
+
+#branding h1 {
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: white !important;
+    text-transform: uppercase;
+}
+
+#user-tools {
+    color: #94a3b8;
+}
+
+/* 4. LES MODULES (Les boîtes blanches deviennent du verre) */
+.module {
+    background: rgba(30, 41, 59, 0.6) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 15px !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    margin-bottom: 30px !important;
+}
+
+.module caption, .module h2 {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #00e5ff !important;
+    font-weight: bold;
+    padding: 12px 15px !important;
+}
+
+/* Les lignes des tableaux */
+tr { background: transparent !important; }
+tr:nth-child(even) { background: rgba(255, 255, 255, 0.02) !important; }
+tr:hover { background: rgba(0, 229, 255, 0.1) !important; }
+
+/* 5. LES BOUTONS (Style Pilule Néon) */
+.button, input[type=submit], .submit-row input {
+    background: linear-gradient(90deg, #00e5ff, #0056b3) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    color: white !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    padding: 10px 20px !important;
+    transition: 0.3s !important;
+    box-shadow: 0 5px 15px rgba(0, 229, 255, 0.2) !important;
+}
+
+.button:hover, input[type=submit]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 229, 255, 0.4) !important;
+}
+
+.button.default, input[type=submit].default {
+    background: linear-gradient(90deg, #00e5ff, #0056b3) !important;
+}
+
+.deletelink {
+    background: transparent !important;
+    color: #ff5f56 !important;
+    border: 1px solid #ff5f56 !important;
+    border-radius: 50px !important;
+}
+
+/* 6. LES CHAMPS DE FORMULAIRE */
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], textarea, select {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid var(--border-color) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #00e5ff !important;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2) !important;
+}
+
+/* 7. LE BREADCRUMB (Fil d'ariane) */
+div.breadcrumbs {
+    background: transparent !important;
+    color: #94a3b8 !important;
+    padding: 15px 40px !important;
+}
+div.breadcrumbs a { color: #00e5ff !important; }
+
+/* 8. ACTIONS RÉCENTES (Sidebar droite) */
+#content-related {
+    background: transparent !important;
+}
+#content-related .module {
+    background: rgba(30, 41, 59, 0.6) !important;
+}
+#content-related h2 {
+    color: white !important;
+    background: transparent !important;
+}
