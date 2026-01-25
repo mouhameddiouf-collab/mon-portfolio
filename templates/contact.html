@@ -4,62 +4,76 @@
 {% block title %}Contact – Mouhamed Diouf{% endblock %}
 
 {% block content %}
-
-<section id="contact" style="padding-top: 120px; padding-bottom: 80px;">
+<section id="contact-section" style="padding-top: 140px; padding-bottom: 80px;">
     <div class="container">
         
-        <h2 class="fade-in-title" style="text-align: center; margin-bottom: 10px;" data-aos="fade-down">
-            RESTONS EN CONTACT
-        </h2>
-        
-        <div style="width: 60px; height: 4px; background: var(--primary); margin: 0 auto 50px auto;" 
-             data-aos="fade-up" data-aos-delay="200">
+        <div class="text-center mb-5" data-aos="fade-down">
+            <h2 class="section-title">INITIALISER LA <span class="highlight">COMMUNICATION</span></h2>
+            <p style="color: #94a3b8; max-width: 500px; margin: 0 auto;">
+                Un projet SIG ? Une analyse de données ? Ou simplement pour échanger ? 
+                Le canal est ouvert.
+            </p>
         </div>
 
         <div class="contact-grid">
             
-            <div class="map-side" style="height: 400px; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"
-                 data-aos="fade-right" data-aos-duration="1000">
-                <div id="ma-carte" style="height: 100%; width: 100%; z-index: 1;"></div>
+            <div class="map-card" data-aos="fade-right">
+                <div class="map-header">
+                    <span class="status-dot blink"></span> Signal GPS : Dakar, Sénégal
+                </div>
+                <div id="map" class="custom-map"></div> 
+                
+                <div class="map-border-corner top-left"></div>
+                <div class="map-border-corner top-right"></div>
+                <div class="map-border-corner bottom-left"></div>
+                <div class="map-border-corner bottom-right"></div>
             </div>
 
-            <div class="contact-form-side" data-aos="fade-left" data-aos-duration="1000">
+            <div class="form-card" data-aos="fade-left">
                 
-                {% if messages %}
-                    {% for message in messages %}
-                        <div style="background: #d1fae5; color: #065f46; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; border: 1px solid #10b981;"
-                             data-aos="zoom-in">
-                            <i class="fa-solid fa-check-circle"></i> {{ message }}
+                <div class="contact-info-bar">
+                    <a href="mailto:dioufmouhamed959@gmail.com" class="info-item">
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <span class="label">Email</span>
+                            <span class="value">dioufmouhamed959@gmail.com</span>
                         </div>
-                    {% endfor %}
-                {% endif %}
-
-                <div style="margin-bottom: 30px;" data-aos="fade-up" data-aos-delay="200">
-                    <h3 style="margin-bottom: 10px; color: var(--primary);">Un projet en tête ?</h3>
-                    <p style="margin-bottom: 15px;">N'hésitez pas à m'écrire pour une collaboration ou juste pour échanger.</p>
-                    <div class="contact-info">
-                        <p><i class="fa-solid fa-envelope"></i> dioufmouhamed959@gmail.com</p>
-                        <p><i class="fa-solid fa-phone"></i> +221 77 699 27 33</p>
-                    </div>
+                    </a>
+                    <a href="tel:+221776992733" class="info-item">
+                        <div class="icon-box"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <span class="label">Téléphone</span>
+                            <span class="value">+221 77 699 27 33</span>
+                        </div>
+                    </a>
                 </div>
 
-                <form class="styled-form" method="POST" action="">
+                <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
+
+                <form method="post" class="tech-form">
                     {% csrf_token %}
                     
-                    <div class="input-group" data-aos="fade-up" data-aos-delay="300">
-                        <input type="text" name="nom" placeholder="Votre Nom" required>
+                    <div class="input-group">
+                        <input type="text" name="nom" id="nom" required placeholder=" " autocomplete="off">
+                        <label for="nom">Identifiant / Nom</label>
+                        <span class="focus-border"></span>
                     </div>
-                    
-                    <div class="input-group" data-aos="fade-up" data-aos-delay="400">
-                        <input type="email" name="email" placeholder="Votre Email" required>
+
+                    <div class="input-group">
+                        <input type="email" name="email" id="email" required placeholder=" " autocomplete="off">
+                        <label for="email">Fréquence / Email</label>
+                        <span class="focus-border"></span>
                     </div>
-                    
-                    <div class="input-group" data-aos="fade-up" data-aos-delay="500">
-                        <textarea name="message" placeholder="Votre Message..." rows="5" required></textarea>
+
+                    <div class="input-group">
+                        <textarea name="message" id="message" rows="4" required placeholder=" "></textarea>
+                        <label for="message">Transmission de données / Message</label>
+                        <span class="focus-border"></span>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary" data-aos="zoom-in" data-aos-delay="600">
-                        Envoyer le message <i class="fa-solid fa-paper-plane"></i>
+
+                    <button type="submit" class="btn-submit">
+                        <span>ENVOYER LE MESSAGE</span>
+                        <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
@@ -68,6 +82,18 @@
     </div>
 </section>
 
-{{ lieux|json_script:"lieux-data" }}
-
+<script>
+    // Exemple basique si tu as besoin, sinon garde le tien !
+    document.addEventListener('DOMContentLoaded', function() {
+        if(document.getElementById('map')) {
+            var map = L.map('map').setView([14.7167, -17.4677], 13); // Coordonnées Dakar
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '©OpenStreetMap, ©CartoDB'
+            }).addTo(map);
+            L.marker([14.7167, -17.4677]).addTo(map)
+                .bindPopup('Position Confirmée.<br> Mouhamed Diouf')
+                .openPopup();
+        }
+    });
+</script>
 {% endblock %}
