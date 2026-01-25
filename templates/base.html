@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body class="fade-out-page">
@@ -40,31 +41,18 @@
         </div>
 
         <nav>
-    <ul>
-        <li><a href="{% url 'accueil' %}" class="{% if request.resolver_match.url_name == 'accueil' %}active{% endif %}">Accueil</a></li>
-        <li><a href="{% url 'apropos' %}" class="{% if request.resolver_match.url_name == 'apropos' %}active{% endif %}">Profil</a></li>
-        <li><a href="{% url 'formation' %}" class="{% if request.resolver_match.url_name == 'formation' %}active{% endif %}">Formation</a></li>
-        <li><a href="{% url 'experience' %}" class="{% if request.resolver_match.url_name == 'experience' %}active{% endif %}">Expériences</a></li>
-        <li><a href="{% url 'certificats' %}" class="{% if request.resolver_match.url_name == 'certificats' %}active{% endif %}">Certificats</a></li>
-        <li><a href="{% url 'projets' %}" class="{% if request.resolver_match.url_name == 'projets' %}active{% endif %}">Réalisations</a></li>
-        <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contacts</a></li>
-    </ul>
-</nav>
-
-        <div class="theme-switch-wrapper">
-            <label class="theme-switch" for="checkbox">
-                <input type="checkbox" id="checkbox" />
-                <div class="slider"> 
-                    <div class="sun-moon"></div>
-                    <div class="cloud cloud-1"></div>
-                    <div class="cloud cloud-2"></div>
-                    <div class="crater"></div>
-                    <div class="star star-1"></div>
-                    <div class="star star-2"></div>
-                </div>
-            </label>
-        </div>
-    </header>
+            <ul>
+                <li><a href="{% url 'accueil' %}" class="{% if request.resolver_match.url_name == 'accueil' %}active{% endif %}">Accueil</a></li>
+                <li><a href="{% url 'apropos' %}" class="{% if request.resolver_match.url_name == 'apropos' %}active{% endif %}">Profil</a></li>
+                <li><a href="{% url 'formation' %}" class="{% if request.resolver_match.url_name == 'formation' %}active{% endif %}">Formation</a></li>
+                <li><a href="{% url 'experience' %}" class="{% if request.resolver_match.url_name == 'experience' %}active{% endif %}">Expériences</a></li>
+                <li><a href="{% url 'certificats' %}" class="{% if request.resolver_match.url_name == 'certificats' %}active{% endif %}">Certificats</a></li>
+                <li><a href="{% url 'projets' %}" class="{% if request.resolver_match.url_name == 'projets' %}active{% endif %}">Réalisations</a></li>
+                <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contacts</a></li>
+            </ul>
+        </nav>
+        
+        </header>
 
     <main>
         {% block content %}
@@ -76,15 +64,20 @@
     </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="{% static 'js/main.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
+    <script>
+        // Initialisation des animations AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>
