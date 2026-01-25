@@ -180,3 +180,5 @@ JAZZMIN_UI_TWEAKS = {
     "navbar": "navbar-dark",
     "sidebar": "sidebar-dark-primary",
 }
+
+# Forcer la mise à jour Render
