@@ -1241,3 +1241,90 @@ h2 .highlight,
     font-size: 1.2rem;
     line-height: 1rem;
 }
+
+/* =========================================
+   STYLE FORMATION : "ACADEMIC LEVEL UP" (VIOLET)
+   ========================================= */
+
+/* 1. LA LIGNE D'ÉNERGIE (Passe du Bleu au Violet Magique) */
+.education-timeline::before {
+    background: linear-gradient(180deg, #d946ef, #8b5cf6, rgba(139, 92, 246, 0.2)) !important;
+    box-shadow: 0 0 15px rgba(217, 70, 239, 0.5) !important;
+}
+
+/* 2. LE CHECKPOINT (On remplace le point par une icône) */
+.education-timeline .timeline-item::before {
+    border-color: #d946ef !important; /* Bordure Rose/Violette */
+    box-shadow: 0 0 15px #d946ef !important;
+    background: #0f172a !important;
+    
+    /* ASTUCE : On met une icône FontAwesome DEDANS */
+    content: '\f19d' !important; /* Code pour le chapeau de diplômé (fa-graduation-cap) */
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    
+    /* Mise en forme de l'icône */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d946ef;
+    font-size: 0.9rem; /* Taille de l'icône */
+    width: 35px !important; /* Un peu plus grand que le point normal */
+    height: 35px !important;
+    left: 4px !important; /* Recentrage manuel */
+    top: -5px !important;
+}
+
+/* 3. L'ONDE DE CHOC (Pulsation Violette) */
+.education-timeline .timeline-item::after {
+    background: rgba(217, 70, 239, 0.3) !important;
+    left: 0px !important; /* Ajustement pour le nouveau cercle plus grand */
+    top: -9px !important;
+    width: 43px !important;
+    height: 43px !important;
+}
+
+/* 4. LA CARTE "DIPLÔME" */
+.education-timeline .timeline-content {
+    border-color: rgba(217, 70, 239, 0.2) !important; /* Bordure violette subtile */
+}
+
+/* Au survol : Effet Néon Violet */
+.education-timeline .timeline-content:hover {
+    border-color: #d946ef !important;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(217, 70, 239, 0.1) !important;
+}
+
+/* Le triangle de connexion devient violet aussi */
+.education-timeline .timeline-content::before {
+    border-right-color: rgba(217, 70, 239, 0.2) !important;
+}
+
+/* 5. LE BADGE "DATE" (Passe au style Étudiant) */
+.education-timeline .timeline-date {
+    background: rgba(139, 92, 246, 0.15) !important;
+    color: #d8b4fe !important; /* Texte Lila clair */
+    border-color: rgba(139, 92, 246, 0.3) !important;
+}
+
+/* 6. LE BADGE "EN COURS" (Animation spéciale pour le Master) */
+/* Ajoute la classe 'badge-encours' dans ton HTML sur le span "En cours" si tu veux ça */
+.badge-encours {
+    background: linear-gradient(90deg, #d946ef, #ec4899);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 0 10px #d946ef;
+    animation: pulse-encours 2s infinite;
+}
+
+@keyframes pulse-encours {
+    0% { box-shadow: 0 0 0 0 rgba(217, 70, 239, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(217, 70, 239, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(217, 70, 239, 0); }
+}
