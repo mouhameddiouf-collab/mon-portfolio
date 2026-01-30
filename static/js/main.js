@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (document.querySelector('.typed-text') && typeof Typed !== 'undefined') {
         new Typed('.typed-text', {
-            strings: ["Géographe", "Data Analyst", "Cartographe", "Passionné d'Environnement"],
+            strings: ["Géographe", "Aspirant Data Analyst", "Cartographe", "Passionné d'Environnement"],
             typeSpeed: 50,
             backSpeed: 30,
             backDelay: 2000,
